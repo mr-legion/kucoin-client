@@ -5,6 +5,7 @@ import com.kucoin.KucoinApiClientFactory;
 import com.kucoin.domain.Response;
 import com.kucoin.domain.general.Asset;
 import com.kucoin.domain.market.MarketInfo;
+import com.kucoin.domain.market.MarketTickerResponse;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -30,5 +31,12 @@ public class KucoinApiAsyncRestClientImplTest {
         Response<List<MarketInfo>> response = kucoinApiAsyncRestClient.getMarketInfo().get();
         assertNotNull(response);
         assertThat(response.getData(), is(not(empty())));
+    }
+
+    @Test
+    public void getMarketTickers_ShouldReturnMarketTickers() throws ExecutionException, InterruptedException {
+        Response<MarketTickerResponse> response = kucoinApiAsyncRestClient.getMarketTickers().get();
+        assertNotNull(response);
+        assertThat(response.getData().getTickers(), is(not(empty())));
     }
 }

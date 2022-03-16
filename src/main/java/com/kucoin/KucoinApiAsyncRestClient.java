@@ -3,6 +3,7 @@ package com.kucoin;
 import com.kucoin.domain.Response;
 import com.kucoin.domain.general.Asset;
 import com.kucoin.domain.market.MarketInfo;
+import com.kucoin.domain.market.MarketTickerResponse;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -29,5 +30,12 @@ public interface KucoinApiAsyncRestClient {
      * @return market info
      */
     CompletableFuture<Response<List<MarketInfo>>> getMarketInfo();
+
+    /**
+     * Get market tickers information (asynchronous).
+     *
+     * @return market tickers
+     */
+    CompletableFuture<Response<MarketTickerResponse>> getMarketTickers();
 
 }

@@ -3,6 +3,7 @@ package com.kucoin;
 import com.kucoin.domain.Response;
 import com.kucoin.domain.general.Asset;
 import com.kucoin.domain.market.MarketInfo;
+import com.kucoin.domain.market.MarketTickerResponse;
 
 import java.util.List;
 
@@ -28,5 +29,12 @@ public interface KucoinApiRestClient {
      * @return market info
      */
     Response<List<MarketInfo>> getMarketInfo();
+
+    /**
+     * Get market tickers information.
+     *
+     * @return market tickers
+     */
+    Response<MarketTickerResponse> getMarketTickers();
 
 }

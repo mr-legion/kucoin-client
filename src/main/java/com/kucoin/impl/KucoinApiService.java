@@ -3,6 +3,7 @@ package com.kucoin.impl;
 import com.kucoin.domain.Response;
 import com.kucoin.domain.general.Asset;
 import com.kucoin.domain.market.MarketInfo;
+import com.kucoin.domain.market.MarketTickerResponse;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
@@ -22,5 +23,8 @@ public interface KucoinApiService {
 
     @GET("/api/v1/symbols")
     Call<Response<List<MarketInfo>>> getMarketInfo();
+
+    @GET("/api/v1/market/allTickers")
+    Call<Response<MarketTickerResponse>> getMarketTickers();
 
 }
