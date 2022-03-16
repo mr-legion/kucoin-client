@@ -3,6 +3,7 @@ package com.kucoin.impl;
 import com.kucoin.KucoinApiAsyncRestClient;
 import com.kucoin.domain.Response;
 import com.kucoin.domain.general.Asset;
+import com.kucoin.domain.market.MarketInfo;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -24,6 +25,15 @@ public class KucoinApiAsyncRestClientImpl implements KucoinApiAsyncRestClient {
     public CompletableFuture<Response<List<Asset>>> getAssets() {
         CompletableFuture<Response<List<Asset>>> future = new CompletableFuture<>();
         kucoinApiService.getAssets().enqueue(new RetrofitCallbackAdapter<>(future));
+        return future;
+    }
+
+    // Market endpoints
+
+    @Override
+    public CompletableFuture<Response<List<MarketInfo>>> getMarketInfo() {
+        CompletableFuture<Response<List<MarketInfo>>> future = new CompletableFuture<>();
+        kucoinApiService.getMarketInfo().enqueue(new RetrofitCallbackAdapter<>(future));
         return future;
     }
 }

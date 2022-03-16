@@ -3,6 +3,7 @@ package com.kucoin.impl;
 import com.kucoin.KucoinApiRestClient;
 import com.kucoin.domain.Response;
 import com.kucoin.domain.general.Asset;
+import com.kucoin.domain.market.MarketInfo;
 
 import java.util.List;
 
@@ -24,5 +25,12 @@ public class KucoinApiRestClientImpl implements KucoinApiRestClient {
     @Override
     public Response<List<Asset>> getAssets() {
         return executeSync(kucoinApiService.getAssets());
+    }
+
+    // Market endpoints
+
+    @Override
+    public Response<List<MarketInfo>> getMarketInfo() {
+        return executeSync(kucoinApiService.getMarketInfo());
     }
 }
