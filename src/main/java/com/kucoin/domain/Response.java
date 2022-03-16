@@ -13,6 +13,6 @@ import lombok.NoArgsConstructor;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Response<T> {
-    private int code;
+    private Integer code;
     private T data;
 }

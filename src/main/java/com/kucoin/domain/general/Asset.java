@@ -20,26 +20,26 @@ public class Asset {
     private String fullName;
 
     @JsonProperty("isMarginEnabled")
-    private boolean marginEnabled;
+    private Boolean marginEnabled;
 
     @JsonProperty("isDebitEnabled")
-    private boolean debitEnabled;
+    private Boolean debitEnabled;
 
     @JsonProperty("isDepositEnabled")
-    private boolean depositEnabled;
+    private Boolean depositEnabled;
 
     @JsonProperty("isWithdrawEnabled")
-    private boolean withdrawEnabled;
+    private Boolean withdrawEnabled;
 
     @JsonProperty("withdrawalMinFee")
-    private double withdrawFee;
+    private Double withdrawFee;
 
     @JsonProperty("withdrawalMinSize")
-    private double withdrawalMinSize;
-    private int precision;
+    private Double withdrawalMinSize;
+    private Integer precision;
 
     @JsonProperty("confirms")
-    private int minConfirm;
+    private Integer minConfirm;
 
     private String contractAddress;
 

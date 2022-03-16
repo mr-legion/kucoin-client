@@ -25,21 +25,21 @@ public class MarketInfo {
     private String market;
 
     @JsonProperty("enableTrading")
-    private boolean enabled;
+    private Boolean enabled;
 
     @JsonProperty("isMarginEnabled")
-    private boolean marginEnabled;
+    private Boolean marginEnabled;
 
     private String feeCurrency;
 
-    private double baseMinSize;
-    private double quoteMinSize;
-    private double baseMaxSize;
-    private double quoteMaxSize;
-    private double baseIncrement;
-    private double quoteIncrement;
-    private double priceIncrement;
-    private double priceLimitRate;
-    private double minFunds;
+    private Double baseMinSize;
+    private Double quoteMinSize;
+    private Double baseMaxSize;
+    private Double quoteMaxSize;
+    private Double baseIncrement;
+    private Double quoteIncrement;
+    private Double priceIncrement;
+    private Double priceLimitRate;
+    private Double minFunds;
 
 }

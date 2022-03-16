@@ -17,6 +17,6 @@ public class MarketTickerResponse {
     @JsonProperty("ticker")
     private List<MarketTicker> tickers;
 
-    private long time;
+    private Long time;
 
 }

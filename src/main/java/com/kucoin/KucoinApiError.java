@@ -13,6 +13,6 @@ import lombok.NoArgsConstructor;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class KucoinApiError {
-    private int code;
+    private Integer code;
     private String msg;
 }

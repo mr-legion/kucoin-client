@@ -39,7 +39,7 @@ public class MarketTicker {
     private Double takerFeeRate;
     private Double makerFeeRate;
 
-    private int takerCoefficient;
-    private int makerCoefficient;
+    private Integer takerCoefficient;
+    private Integer makerCoefficient;
 
 }

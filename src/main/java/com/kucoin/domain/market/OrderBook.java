@@ -13,8 +13,8 @@ import java.util.List;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class OrderBook {
-    private long sequence;
-    private long time;
+    private Long sequence;
+    private Long time;
     private List<Order> asks;
     private List<Order> bids;
 }
