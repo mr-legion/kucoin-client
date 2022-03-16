@@ -5,6 +5,7 @@ import com.kucoin.domain.Response;
 import com.kucoin.domain.general.Asset;
 import com.kucoin.domain.market.MarketInfo;
 import com.kucoin.domain.market.MarketTickerResponse;
+import com.kucoin.domain.market.OrderBook;
 
 import java.util.List;
 
@@ -38,5 +39,10 @@ public class KucoinApiRestClientImpl implements KucoinApiRestClient {
     @Override
     public Response<MarketTickerResponse> getMarketTickers() {
         return executeSync(kucoinApiService.getMarketTickers());
+    }
+
+    @Override
+    public Response<OrderBook> getOrderBook(String symbol, Integer limit) {
+        return executeSync(kucoinApiService.getOrderBook(limit, symbol));
     }
 }

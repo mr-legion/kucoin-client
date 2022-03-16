@@ -4,8 +4,11 @@ import com.kucoin.domain.Response;
 import com.kucoin.domain.general.Asset;
 import com.kucoin.domain.market.MarketInfo;
 import com.kucoin.domain.market.MarketTickerResponse;
+import com.kucoin.domain.market.OrderBook;
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 import java.util.List;
 
@@ -26,5 +29,8 @@ public interface KucoinApiService {
 
     @GET("/api/v1/market/allTickers")
     Call<Response<MarketTickerResponse>> getMarketTickers();
+
+    @GET("/api/v1/market/orderbook/level2_{limit}")
+    Call<Response<OrderBook>> getOrderBook(@Path("limit") Integer limit, @Query("symbol") String symbol);
 
 }

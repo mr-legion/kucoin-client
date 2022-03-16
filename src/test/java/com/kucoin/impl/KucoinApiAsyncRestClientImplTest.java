@@ -6,6 +6,7 @@ import com.kucoin.domain.Response;
 import com.kucoin.domain.general.Asset;
 import com.kucoin.domain.market.MarketInfo;
 import com.kucoin.domain.market.MarketTickerResponse;
+import com.kucoin.domain.market.OrderBook;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -38,5 +39,13 @@ public class KucoinApiAsyncRestClientImplTest {
         Response<MarketTickerResponse> response = kucoinApiAsyncRestClient.getMarketTickers().get();
         assertNotNull(response);
         assertThat(response.getData().getTickers(), is(not(empty())));
+    }
+
+    @Test
+    public void getOrderBook_ShouldReturnOrderBookForBTCUSDT() throws ExecutionException, InterruptedException {
+        Response<OrderBook> response = kucoinApiAsyncRestClient.getOrderBook("BTC-USDT", 20).get();
+        assertNotNull(response);
+        assertThat(response.getData().getAsks(), is(not(empty())));
+        assertThat(response.getData().getBids(), is(not(empty())));
     }
 }

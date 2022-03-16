@@ -4,6 +4,7 @@ import com.kucoin.domain.Response;
 import com.kucoin.domain.general.Asset;
 import com.kucoin.domain.market.MarketInfo;
 import com.kucoin.domain.market.MarketTickerResponse;
+import com.kucoin.domain.market.OrderBook;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -37,5 +38,14 @@ public interface KucoinApiAsyncRestClient {
      * @return market tickers
      */
     CompletableFuture<Response<MarketTickerResponse>> getMarketTickers();
+
+    /**
+     * Get order book for the market (asynchronous).
+     *
+     * @param symbol market symbol (e.g. BTC-USDT)
+     * @param limit  depth of the order book. Valid limits: [20, 100]
+     * @return orderbook
+     */
+    CompletableFuture<Response<OrderBook>> getOrderBook(String symbol, Integer limit);
 
 }
