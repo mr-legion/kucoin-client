@@ -14,11 +14,21 @@ public class KucoinApiClientFactory {
     private final KucoinApiServiceGenerator serviceGenerator;
 
     public KucoinApiClientFactory() {
-        this(new OkHttpClient());
+        this.serviceGenerator = new KucoinApiServiceGenerator(new OkHttpClient());
     }
 
-    private KucoinApiClientFactory(OkHttpClient client) {
-        this.serviceGenerator = new KucoinApiServiceGenerator(client);
+    public KucoinApiClientFactory(ApiInteractionConfig apiInteractionConfig) {
+        this(new OkHttpClient(), apiInteractionConfig);
+    }
+
+    private KucoinApiClientFactory(OkHttpClient client, ApiInteractionConfig apiInteractionConfig) {
+        OkHttpClient newClient = client.newBuilder()
+                .proxySelector(new CustomProxySelector(apiInteractionConfig.getProxies()))
+                .addInterceptor(new RateLimitInterceptor(
+                        apiInteractionConfig.getMaxRequestsPerSecond(),
+                        apiInteractionConfig.getMaxApiKeyUsagePerSecond()
+                )).build();
+        this.serviceGenerator = new KucoinApiServiceGenerator(newClient);
     }
 
     /**
