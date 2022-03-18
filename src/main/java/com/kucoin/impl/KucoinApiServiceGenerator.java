@@ -1,5 +1,7 @@
 package com.kucoin.impl;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kucoin.KucoinApiError;
 import com.kucoin.exception.KucoinApiException;
 import okhttp3.OkHttpClient;
@@ -20,11 +22,16 @@ import static com.kucoin.constant.KucoinApiConstants.API_BASE_URL;
  */
 public class KucoinApiServiceGenerator {
 
-    private static final Converter.Factory converterFactory = JacksonConverterFactory.create();
+    private static final ObjectMapper mapper = new ObjectMapper();
+    private static final Converter.Factory converterFactory = JacksonConverterFactory.create(mapper);
     @SuppressWarnings("unchecked")
     private static final Converter<ResponseBody, KucoinApiError> errorBodyConverter =
             (Converter<ResponseBody, KucoinApiError>) converterFactory.responseBodyConverter(
                     KucoinApiError.class, new Annotation[0], null);
+
+    static {
+        mapper.enable(DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_AS_NULL);
+    }
 
     private final OkHttpClient client;
 
