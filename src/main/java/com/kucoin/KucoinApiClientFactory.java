@@ -21,7 +21,7 @@ public class KucoinApiClientFactory {
         this(new OkHttpClient(), apiInteractionConfig);
     }
 
-    private KucoinApiClientFactory(OkHttpClient client, ApiInteractionConfig apiInteractionConfig) {
+    public KucoinApiClientFactory(OkHttpClient client, ApiInteractionConfig apiInteractionConfig) {
         OkHttpClient newClient = client.newBuilder()
                 .proxySelector(new CustomProxySelector(apiInteractionConfig.getProxies()))
                 .addInterceptor(new RateLimitInterceptor(
